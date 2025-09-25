@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=69", "wheel", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# Dynamic version is supplied by setuptools-scm (自动由 setuptools-scm 提供版本号)
+name = "numma"
+description = "Common Numerical Tools"
+readme = "README.md"
+requires-python = ">=3.8"
+dynamic = ["version"]
+authors = [{ name = "Ma" }]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools_scm]
+# Guess-next-dev keeps post-release versions tidy (发布后自动切换到下一开发版)
+version_scheme = "guess-next-dev"
+# Local scheme embeds git node+date for dirty trees (本地方案在有提交时包含哈希和日期)
+local_scheme = "node-and-date"
+# fallback_version is used when Git metadata is missing (缺少 Git 信息时使用的后备版本号)
+fallback_version = "0.0.0"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
