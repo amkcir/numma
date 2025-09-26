@@ -14,7 +14,7 @@ def test_sortedroots_on_cos() -> None:
     def func(x: float) -> float:
         return float(np.cos(x) - x)
 
-    roots = sortedroots(func, -10.0, 10.0, 0.5)
+    roots = sortedroots(func, 0, 1, 2000)
     expected = [0.7390851332151607]
     for root, reference in zip(roots, expected):
         assert abs(root - reference) < 1e-5, f"Expected {reference}, got {root}"
